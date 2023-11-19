@@ -26,16 +26,23 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
         String phoneNumber = "010-1111-1111";
         LocalDateTime registeredAt = LocalDateTime.now();
 
+//        User user = new User();
+//        user.setAccount(account);
+//        user.setPassword(password);
+//        user.setStatus(status);
+//        user.setEmail(email);
+//        user.setPhoneNumber(phoneNumber);
+//        user.setRegisteredAt(registeredAt);
 
-        User user = new User();
-        user.setAccount(account);
-        user.setPassword(password);
-        user.setStatus(status);
-        user.setEmail(email);
-        user.setPhoneNumber(phoneNumber);
-        user.setRegisteredAt(registeredAt);
-//        user.setCreatedAt(createdAt);
-//        user.setCreatedBy(createdBy);
+        // @Builder lombok 패턴을 활용한 생성자 호출, Class 변경과 생성자변경에 자유로움
+        User user = User.builder()
+                .account(account)
+                .password(password)
+                .status(status)
+                .email(email)
+                .phoneNumber(phoneNumber)
+                .registeredAt(registeredAt)
+                .build();
 
         User newUser = userRepository.save(user);
         Assertions.assertNotNull(newUser);
