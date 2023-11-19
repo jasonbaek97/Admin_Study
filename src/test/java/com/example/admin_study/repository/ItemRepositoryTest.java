@@ -26,7 +26,7 @@ public class ItemRepositoryTest extends AdminStudyApplicationTests {
         item.setRegisteredAt(LocalDateTime.now());
         item.setCreatedAt(LocalDateTime.now());
         item.setCreatedBy("Partner01");
-        item.setPartnerId(82L);
+//        item.setPartnerId(82L);
 
         Item newItem = itemRepository.save(item);
         Assertions.assertNotNull(newItem);

@@ -25,8 +25,7 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
         String email = "Test01@gmail.com";
         String phoneNumber = "010-1111-1111";
         LocalDateTime registeredAt = LocalDateTime.now();
-        LocalDateTime createdAt = LocalDateTime.now();
-        String createdBy = "AdminServer";
+
 
         User user = new User();
         user.setAccount(account);
@@ -35,8 +34,8 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
         user.setEmail(email);
         user.setPhoneNumber(phoneNumber);
         user.setRegisteredAt(registeredAt);
-        user.setCreatedAt(createdAt);
-        user.setCreatedBy(createdBy);
+//        user.setCreatedAt(createdAt);
+//        user.setCreatedBy(createdBy);
 
         User newUser = userRepository.save(user);
         Assertions.assertNotNull(newUser);
@@ -57,6 +56,10 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
                 System.out.println("총 수량 :"+orderGroup.getTotalQuantity());
                 System.out.println("-------------주문상세-------------");
                 orderGroup.getOrderDetailList().forEach(orderDetail -> {
+                    System.out.println("파트너사 : "+orderDetail.getItem().getPartner().getName());
+                    System.out.println("파트너사 카테고리 : "+orderDetail.getItem().getPartner().getCategory().getTitle());
+                    System.out.println("주문상품 : "+orderDetail.getItem().getName());
+                    System.out.println("고객센터번호 : "+orderDetail.getItem().getPartner().getCallCenter());
                     System.out.println("주문상태 : "+orderDetail.getStatus());
                     System.out.println("도착 예정일시 :"+orderDetail.getArrivalDate());
                 });
