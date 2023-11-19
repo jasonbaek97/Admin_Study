@@ -1,20 +1,20 @@
 package com.example.admin_study.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Data
+@ToString(exclude = {"user","orderDetailList"})       // 상호 참조되는 변수는 ToString 제외
 public class OrderGroup {
 
     @Id
@@ -35,5 +35,11 @@ public class OrderGroup {
     private LocalDateTime updatedAt;
     private String updatedBy;
 
-    private Long userId;
+    // OrderGroup : User = N : 1
+    @ManyToOne
+    private User user;
+
+    // OrderGroup : OrderDetail  = 1: N
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "orderGroup")
+    private List<OrderDetail> orderDetailList;
 }

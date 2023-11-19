@@ -47,7 +47,22 @@ public class UserRepositoryTest extends AdminStudyApplicationTests {
     public void read(){
         User user = userRepository.findFirstByPhoneNumberOrderByIdDesc("010-1111-1111");
         Assertions.assertNotNull(user);
-//        System.out.println(user.toString());
+        if(user != null ){
+            user.getOrderGroup().stream().forEach(orderGroup -> {
+
+                System.out.println("-------------주문묶음-------------");
+                System.out.println("수령인 : "+  orderGroup.getRevName());
+                System.out.println("주소 : "+orderGroup.getRevAddress());
+                System.out.println("총 금액 : "+orderGroup.getTotalPrice());
+                System.out.println("총 수량 :"+orderGroup.getTotalQuantity());
+                System.out.println("-------------주문상세-------------");
+                orderGroup.getOrderDetailList().forEach(orderDetail -> {
+                    System.out.println("주문상태 : "+orderDetail.getStatus());
+                    System.out.println("도착 예정일시 :"+orderDetail.getArrivalDate());
+                });
+            });
+        }
+
 
     }
 

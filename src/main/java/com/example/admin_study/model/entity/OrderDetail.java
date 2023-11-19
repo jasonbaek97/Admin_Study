@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Entity     // order_detail
 @AllArgsConstructor
 @NoArgsConstructor
-//@ToString(exclude = {"user","item"})        // lombok ToString() 을 통해서 User, OrderDetail 상호 참조된걸 제외
+@ToString(exclude = {"orderGroup"})        // lombok ToString() 을 통해서 User, OrderDetail 상호 참조된걸 제외
 public class OrderDetail {
 
     @Id
@@ -29,11 +29,9 @@ public class OrderDetail {
     private LocalDateTime updatedAt;
     private String updatedBy;
     private Long itemId;
-    private Long orderGroupId;
 
-//    @ManyToOne              // OrderDetail : User =  N : 1
-//    private User user;      // Hibernate에서 자동 user_id 매핑
-//
-//    @ManyToOne
-//    private Item item;    // OrderDetail : Item = N : 1
+    // OrderDetail : OrderGroup = N : 1
+    @ManyToOne
+    private OrderGroup orderGroup;
+
 }
