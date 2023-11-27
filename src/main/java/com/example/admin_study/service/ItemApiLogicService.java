@@ -52,7 +52,24 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
 
     @Override
     public Header<ItemApiResponse> update(Header<ItemApiRequest> request) {
-        return null;
+        ItemApiRequest body = request.getData();
+        return itemRepository.findById(body.getId())
+                .map(entityitem -> {
+                    entityitem
+                            .setStatus(body.getStatus())
+                            .setName(body.getName())
+                            .setContent(body.getContent())
+                            .setPrice(body.getPrice())
+                            .setBrandName(body.getBrandName())
+                            .setTitle(body.getTitle())
+                            .setRegisteredAt(body.getRegisteredAt())
+                            .setUnregisteredAt(body.getUnregisteredAt())
+                            ;
+                    return entityitem;
+                })
+                .map(newEntityItem-> itemRepository.save(newEntityItem))
+                .map(item -> response(item))
+                .orElseGet(()->Header.ERROR("데이터 없음"));
     }
 
     @Override

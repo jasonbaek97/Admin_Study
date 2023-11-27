@@ -18,27 +18,28 @@ public class ItemApiController implements CrudInterface<ItemApiRequest, ItemApiR
     private ItemApiLogicService itemApiLogicService;
 
     @Override
-    @PostMapping("")        // api/item
+    @PostMapping("")        // api/item  Create
     public Header<ItemApiResponse> create(@RequestBody Header<ItemApiRequest> request) {
         log.info("Item create() request : {}",request);
         return itemApiLogicService.create(request);
     }
 
     @Override
-    @GetMapping("{id}")     // api/item/1 ...
+    @GetMapping("{id}")     // api/item/1 ... Read
     public Header<ItemApiResponse> read(@PathVariable Long id) {
         log.info("Item read() id : {}",id);
         return itemApiLogicService.read(id);
     }
 
     @Override
-    @PutMapping("")         // api/item
+    @PutMapping("")         // api/item  Update
     public Header<ItemApiResponse> update(@RequestBody Header<ItemApiRequest> request) {
-        return null;
+        log.info("Item update() request : {}",request);
+        return itemApiLogicService.update(request);
     }
 
     @Override
-    @DeleteMapping("{id}")  // api/item/1 ..
+    @DeleteMapping("{id}")  // api/item/1 .. Delete
     public Header delete(@PathVariable Long id) {
         return null;
     }
