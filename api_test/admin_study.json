@@ -1,0 +1,443 @@
+{
+  "version": 6,
+  "entities": [
+    {
+      "entity": {
+        "type": "Project",
+        "description": "어드민 API Test",
+        "id": "9cdcd052-5c32-4276-903d-15aef21cd7a6",
+        "name": "Admin_Study"
+      },
+      "children": [
+        {
+          "entity": {
+            "type": "Service",
+            "id": "15f7eda8-369d-4528-ba6a-7c2400ed6c5a",
+            "name": "Item CRUD Service"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n\"transaction_time\": \"2023-12-02T17:01:58.3625088\",\n\"data\": \n  {\n    \"status\": \"WAITING\",\n    \"name\": \"갤럭시탭\",\n    \"title\": \"갤럭시탭10\",\n    \"content\": \"24년 갤럭시 탭\",\n    \"price\": 1000000,\n    \"brand_name\": \"삼성\",\n    \"registered_at\": \"2023-12-02T17:01:58.3625088\",\n    \"partner_id\":82\n    }\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/item"
+                },
+                "id": "d2855b64-08c1-415d-b705-c42d616df8a8",
+                "name": "Item Create( )",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+                  "name": "DELETE"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/item/412"
+                },
+                "description": "",
+                "id": "0716ff8a-ffb7-421d-a229-a8ccf171ecea",
+                "name": "Item Delete( )",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/item/407"
+                },
+                "id": "6f0167e3-a465-4279-8c5b-def9d80d6af5",
+                "name": "Item Read( )",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.4",
+                  "name": "PUT"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n    \"transaction_time\": \"2023-12-02T20:23:01.7418704\",\n    \"result_code\": \"OK\",\n    \"description\": \"OK\",\n    \"data\": {\n        \"id\": 406,\n        \"status\": \"REGISTERED\",\n        \"name\": \"삼성 노트북\",\n        \"title\": \"삼성 노트북 A100\",\n        \"content\": \"2014년 삼성 노트북 입니다\",\n        \"price\": 2000000.0000,\n        \"brand_name\": \"삼성\",\n        \"registered_at\": \"2023-12-02T20:23:01.7418704\",\n        \"unregistered_at\": null,\n        \"partner_id\": 82\n    }\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/item"
+                },
+                "id": "f9d02d17-9fa6-42e1-958b-da76efbe07b3",
+                "name": "Item Update( )",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "fdafd1a4-5546-4b6a-9ed9-30ea12b844d0",
+            "name": "OrderGroup CRUD Service"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n    \"transaction_time\": \"2023-12-02T20:44:11.4128326\",\n    \"result_code\": \"OK\",\n    \"description\": \"OK\",\n    \"data\": {\n        \"status\": \"COMPLETE\",\n        \"order_type\": \"ALL\",\n        \"rev_address\": \"서울시 강남구\",\n        \"rev_name\": \"홍길동\",\n        \"payment_type\": \"CARD\",\n        \"total_price\": 1000000.0000,\n        \"total_quantity\": 1,\n        \"order_at\": \"2023-11-17T00:05:39\",\n        \"arrival_date\": \"2023-11-19T00:05:39\",\n        \"user_id\": 1\n    }\n}"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/orderGroup"
+                },
+                "id": "b1ee28f2-7b37-4327-845a-52d2b9cee61f",
+                "name": "OrderGroup Create( )",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.5",
+                  "name": "DELETE"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/orderGroup/2"
+                },
+                "id": "f0cfcdc3-5684-4f37-86c9-0002c5876d3b",
+                "name": "OrderGroup Delete( )",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/orderGroup/1"
+                },
+                "id": "ec256941-4386-4059-b7e5-1397a4c17714",
+                "name": "OrderGroup Read( )",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.4",
+                  "name": "PUT"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n    \"transaction_time\": \"2023-12-02T20:44:11.4128326\",\n    \"result_code\": \"OK\",\n    \"description\": \"OK\",\n    \"data\": {\n        \"id\": 1,\n        \"status\": \"COMPLETE\",\n        \"order_type\": \"EACH\",\n        \"rev_address\": \"서울시 서초구\",\n        \"rev_name\": \"홍길동\",\n        \"payment_type\": \"CARD\",\n        \"total_price\": 1000000.0000,\n        \"total_quantity\": 2,\n        \"order_at\": \"2023-11-17T00:05:39\",\n        \"user_id\": 1\n    }\n}\n"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/orderGroup"
+                },
+                "id": "f418a755-2471-46d6-862e-37796a55b880",
+                "name": "OrderGroup Update( )",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
+          "entity": {
+            "type": "Service",
+            "id": "d63c6ce2-b9c8-4358-a66a-f0fb32737969",
+            "name": "Usert CRUD Service"
+          },
+          "children": [
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.3",
+                  "name": "POST"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n    \"transaction_time\": \"2023-12-02T21:28:06.7374492\",\n    \"result_code\": \"OK\",\n    \"description\": \"OK\",\n    \"data\": {\n        \"account\": \"Test03\",\n        \"password\": \"Test03\",\n        \"status\": \"UNREGISTERED\",\n        \"email\": \"Test03@gmail.com\",\n        \"phone_number\": \"010-3333-3333\",\n        \"registered_at\": \"2023-11-18T22:50:31\",\n        \"un_registered_at\": null\n    }\n}\n"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/user"
+                },
+                "id": "baff84c1-3080-435f-b790-b806e5aa3753",
+                "name": "User Create( )",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.1",
+                  "name": "GET"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/user/1"
+                },
+                "id": "efc35806-756c-467a-aa02-6fc36e3b6cf1",
+                "name": "User Read( )",
+                "headers": []
+              }
+            },
+            {
+              "entity": {
+                "type": "Request",
+                "method": {
+                  "requestBody": true,
+                  "link": "http://tools.ietf.org/html/rfc7231#section-4.3.4",
+                  "name": "PUT"
+                },
+                "body": {
+                  "formBody": {
+                    "overrideContentType": true,
+                    "encoding": "application/x-www-form-urlencoded",
+                    "items": []
+                  },
+                  "bodyType": "Text",
+                  "textBody": "{\n    \"transaction_time\": \"2023-12-02T21:29:58.7296696\",\n    \"result_code\": \"OK\",\n    \"description\": \"OK\",\n    \"data\": {\n        \"id\": 4,\n        \"account\": \"Test03\",\n        \"password\": \"Test03\",\n        \"status\": \"UNREGISTERED\",\n        \"email\": \"Test03@gmail.com\",\n        \"phone_number\": \"010-3333-3333\",\n        \"registered_at\": \"2023-12-02T21:29:58.7119007\",\n        \"un_registered_at\": null\n    }\n}\n"
+                },
+                "uri": {
+                  "query": {
+                    "delimiter": "&",
+                    "items": []
+                  },
+                  "scheme": {
+                    "name": "http",
+                    "version": "V11"
+                  },
+                  "host": "localhost:8080",
+                  "path": "/api/user"
+                },
+                "id": "aea4ce96-b136-42b6-90cf-fbb657dc8bf1",
+                "name": "User Upate( )",
+                "headers": [
+                  {
+                    "enabled": true,
+                    "name": "Content-Type",
+                    "value": "application/json"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
