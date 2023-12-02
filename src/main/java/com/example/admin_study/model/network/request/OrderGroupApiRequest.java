@@ -15,17 +15,19 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ItemApiRequest {
+public class OrderGroupApiRequest {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String status;
-    private String name;
-    private String title;
-    private String content;
-    private BigDecimal price;
-    private String brandName;
-    private LocalDateTime registeredAt;
-    private LocalDateTime unregisteredAt;
-    private Long partnerId;
+    private String orderType;
+    private String revAddress;
+    private String revName;
+    private String paymentType;
+    private BigDecimal totalPrice;
+    private Integer totalQuantity;
+    private LocalDateTime orderAt;
+    private LocalDateTime arrivalDate;
+    private Long userId;
 }
