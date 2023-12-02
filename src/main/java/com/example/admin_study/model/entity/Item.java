@@ -1,5 +1,6 @@
 package com.example.admin_study.model.entity;
 
+import com.example.admin_study.model.enumclass.ItemStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -26,7 +27,8 @@ public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String status;
+    @Enumerated(EnumType.STRING)    // EnumType.ORDINAL = 숫자로 저장, EnumType.STRING = 문자열로 저장
+    private ItemStatus status;      // REGISTERED / UNREGISTERED / WAITING
     private String name;
     private String title;
     private String content;

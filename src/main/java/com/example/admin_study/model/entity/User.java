@@ -1,5 +1,6 @@
 package com.example.admin_study.model.entity;
 
+import com.example.admin_study.model.enumclass.UserStatus;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -27,9 +28,10 @@ public class User {
     private Long id;
     private String account;
     private String password;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private UserStatus status;           // REGISTERED / UNREGISTERED
     private String email;
-    private String phoneNumber;     // JPA에서 자동으로 phone_number 매핑
+    private String phoneNumber;         // JPA에서 자동으로 phone_number 매핑
     private LocalDateTime registeredAt;
     private LocalDateTime unregisteredAt;
     @CreatedDate

@@ -1,5 +1,6 @@
 package com.example.admin_study.model.entity;
 
+import com.example.admin_study.model.enumclass.OrderType;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.Accessors;
@@ -28,7 +29,8 @@ public class OrderGroup {
     private Long id;
 
     private String status;
-    private String orderType;
+    @Enumerated(EnumType.STRING)    // EnumType.STRING : 문자열로 저장
+    private OrderType orderType;    // 주문의 형태 - 일괄 / 개별
     private String revAddress;
     private String revName;
     private String paymentType;
