@@ -9,11 +9,13 @@ import com.example.admin_study.model.network.response.ItemApiResponse;
 import com.example.admin_study.model.network.response.OrderGroupApiResponse;
 import com.example.admin_study.repository.OrderGroupRepository;
 import com.example.admin_study.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Slf4j
 @Service
 public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiRequest, OrderGroupApiResponse> {
 
@@ -25,6 +27,7 @@ public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiReq
 
     @Override
     public Header<OrderGroupApiResponse> create(Header<OrderGroupApiRequest> request) {
+        log.debug(request.toString());
         OrderGroupApiRequest body = request.getData();
         OrderGroup orderGroup = OrderGroup.builder()
                 .status(body.getStatus())
@@ -51,12 +54,38 @@ public class OrderGroupApiLogicService implements CrudInterface<OrderGroupApiReq
 
     @Override
     public Header<OrderGroupApiResponse> update(Header<OrderGroupApiRequest> request) {
-        return null;
+        // 1. request data 가져오기
+        OrderGroupApiRequest body = request.getData();
+        // 2. request data로 OrderGroup 찾기
+        return orderGroupRepository.findById(body.getId())
+                .map(orderGroup -> {
+                    // 3. update
+                    orderGroup.setStatus(body.getStatus())
+                            .setOrderType(body.getOrderType())
+                            .setRevAddress(body.getRevAddress())
+                            .setRevName(body.getRevName())
+                            .setPaymentType(body.getPaymentType())
+                            .setTotalPrice(body.getTotalPrice())
+                            .setTotalQuantity(body.getTotalQuantity())
+                            .setOrderAt(body.getOrderAt())
+                            .setArrivalDate(body.getArrivalDate())
+                            .setUser(userRepository.getReferenceById(body.getUserId()));
+                    return orderGroup;
+                })
+                .map(changeOrderGroup -> orderGroupRepository.save(changeOrderGroup))
+                .map(newOrderGroup -> response(newOrderGroup))
+                .orElseGet(()->Header.ERROR("데이터 없음"));
     }
 
     @Override
     public Header delete(Long id) {
-        return null;
+
+        return orderGroupRepository.findById(id)
+                .map(orderGroup -> {
+                    orderGroupRepository.delete(orderGroup);
+                    return Header.OK();
+                })
+                .orElseGet(()->Header.ERROR("데이터 없음"));
     }
 
     // Response 변환함수

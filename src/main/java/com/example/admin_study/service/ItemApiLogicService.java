@@ -10,12 +10,14 @@ import com.example.admin_study.repository.PartnerRepository;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+@Slf4j
 @Service
 public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemApiResponse> {
 
@@ -27,6 +29,7 @@ public class ItemApiLogicService implements CrudInterface<ItemApiRequest, ItemAp
 
     @Override
     public Header<ItemApiResponse> create(Header<ItemApiRequest> request) {
+        log.debug(request.toString());
         ItemApiRequest body = request.getData();
         Item item = Item.builder()
                 .status(body.getStatus())
